@@ -1,6 +1,7 @@
 package ru.job4j.model;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -18,7 +19,11 @@ public class Post {
 
     private String status;
 
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date created;
+
     public Post(String description, String mark, String bodyMark, String status) {
+        created = new Date(System.currentTimeMillis());
         this.description = description;
         this.mark = mark;
         this.bodyMark = bodyMark;
